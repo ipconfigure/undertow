@@ -1147,6 +1147,7 @@ public class SslConduit implements StreamSourceConduit, StreamSinkConduit {
                                                 --outstandingTasks;
                                                 try {
                                                     doHandshake();
+                                                    doUnwrap(null, 0, 0);
                                                 } catch (IOException | RuntimeException | Error e) {
                                                     UndertowLogger.REQUEST_LOGGER.debug("Closing SSLConduit after exception on handshake", e);
                                                     IoUtils.safeClose(connection);
